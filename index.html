@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CiaoBella Pizzeria</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#cart">Корзина</a></li>
+        <li><a href="#contacts">Контакты и обратная связь</a></li>
+        <li><a href="#menu">Меню</a></li>
+        <li><a href="#actions">Акции</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="cart">
+      <h2>Корзина</h2>
+      <ul id="cart-list"></ul>
+      <button id="checkout">Оформить заказ</button>
+    </section>
+    <section id="contacts">
+      <h2>Контакты и обратная связь</h2>
+      <p>Телефон: +7 993 072 02 04</p>
+      <p>Адрес: Мурино, Садовая улица 32</p>
+      <p><a href="https://yandex.ru/maps/org/ciaobella/93832641235/?ll=30.452439%2C60.042353&z=17">Яндекс.Карты</a></p>
+      <p><a href="https://t.me/CIAOBELLAPIZZERIA">Telegram</a></p>
+      <form>
+        <label for="feedback">Обратная связь:</label>
+        <textarea id="feedback" name="feedback"></textarea>
+        <button>Отправить</button>
+      </form>
+    </section>
+    <section id="menu">
+      <h2>Меню</h2>
+      <ul>
+        <li>
+          <h3>ХотДог</h3>
+          <ul>
+            <li>Хот Дог с сосиской - 250 руб.</li>
+            <li>Хот дог с бананом - 300 руб.</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Топпинги к пицце</h3>
+          <ul>
+            <li>Шампиньоны - 70 руб.</li>
+            <li>Чесночный соус - 70 руб.</li>
+            <li>Черри - 70 руб.</li>
+            <!--... -->
+          </ul>
+        </li>
+        <li>
+          <h3>Пицца</h3>
+          <ul>
+            <li>С шпинатом - 600 руб.</li>
+            <li>С креветками - 650 руб.</li>
+            <!--... -->
+          </ul>
+        </li>
+        <li>
+          <h3>Панини</h3>
+          <ul>
+            <li>Панини с сыром страчателла - 300 руб.</li>
+            <li>Панини с ветчиной и rukkola - 250 руб.</li>
+            <!--... -->
+          </ul>
+        </li>
+        <li>
+          <h3>Десерты</h3>
+          <ul>
+            <li>Торт фисташка - 300 руб.</li>
+            <li>Халопени - 70 руб.</li>
+            <!--... -->
+          </ul>
+        </li>
+        <li>
+          <h3>Напитки</h3>
+          <ul>
+            <li>Чай - 60 руб.</li>
+            <li>Морс - 120 руб.</li>
+            <!--... -->
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section id="actions">
+      <h2>Акции</h2>
+      <ul>
+        <li>Скидка 10% на первую заказ</li>
+        <li>Бесплатная доставка от 1000 руб.</li>
+        <!--... -->
+      </ul>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
