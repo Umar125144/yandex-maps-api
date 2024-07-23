@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Сделать заказ</title>
+    <title>Сделать заказ - CiaoBella</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Сделать заказ</h1>
+        <img src="обои.jpg" alt="CiaoBella">
         <nav>
             <ul>
                 <li><a href="index.html">Главная</a></li>
@@ -22,28 +23,36 @@
     <main>
         <section class="menu">
             <h2>Меню</h2>
-            <div class="items">
+            <div class="category">
+                <h3>Хот-Доги</h3>
                 <div class="item">
-                    <h3>Пицца Маргарита</h3>
-                    <p>Цена: 400 руб</p>
-                    <button class="add-to-cart" data-item="Пицца Маргарита" data-price="400">Добавить в корзину</button>
+                    <h4>Хот Дог с сосиской</h4>
+                    <p>Цена: 250 руб</p>
+                    <button class="add-to-cart" data-item="Хот Дог с сосиской" data-price="250">Добавить в корзину</button>
                 </div>
                 <div class="item">
-                    <h3>Пицца Пепперони</h3>
-                    <p>Цена: 560 руб</p>
-                    <button class="add-to-cart" data-item="Пицца Пепперони" data-price="560">Добавить в корзину</button>
+                    <h4>Хот дог с бананом</h4>
+                    <p>Цена: 300 руб</p>
+                    <button class="add-to-cart" data-item="Хот дог с бананом" data-price="300">Добавить в корзину</button>
                 </div>
-                <!-- Добавьте остальные элементы меню здесь -->
             </div>
-        </section>
-    </main>
-    <footer>
-        <h2>Корзина</h2>
-        <div id="cart">
-            <!-- Элементы корзины будут добавляться здесь -->
-        </div>
-        <button id="checkout">Оформить заказ</button>
-    </footer>
-    <script src="scripts.js"></script>
-</body>
-</html>
+            <div class="category">
+                <h3>Пицца</h3>
+                <div class="item">
+                    <h4>С шпинатом</h4>
+                    <p>Цена: 600 руб</p>
+                    <button class="add-to-cart" data-item="С шпинатом" data-price="600">Добавить в корзину</button>
+                </div>
+                <!-- Добавить остальные пиццы аналогично -->
+            </div>
+            <div class="category">
+                <h3>Панини</h3>
+                <div class="item">
+                    <h4>Панини с сыром страчателла</h4>
+                    <p>Цена: 300 руб</p>
+                    <button class="add-to-cart" data-item="Панини с сыром страчателла" data-price="300">Добавить в корзину</button>
+                </div>
+                <!-- Добавить остальные панини аналогично -->
+            </div>
+            <div class="category">
+                <h3>Десерты<
