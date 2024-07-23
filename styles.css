@@ -37,6 +37,7 @@ nav ul li a {
 
 main {
     padding: 10px;
+    text-align: center;
 }
 
 .menu {
@@ -70,7 +71,7 @@ main {
     margin: 10px 0 5px;
 }
 
-.add-to-cart, .add-topping, .add-quantity {
+.add-to-cart {
     background-color: #ff6347;
     color: #fff;
     padding: 10px 20px;
@@ -81,7 +82,7 @@ main {
     cursor: pointer;
 }
 
-.footer {
+footer {
     background-color: #333;
     color: #fff;
     text-align: center;
@@ -99,6 +100,18 @@ main {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.notification {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: none;
 }
 
 .modal {
