@@ -1,12 +1,11 @@
 body {
     font-family: Arial, sans-serif;
     background-image: url('обои.jpg');
-    background-size: cover; /* Фон будет покрывать всю область */
-    background-repeat: no-repeat; /* Фон не будет повторяться */
-    background-attachment: fixed; /* Фон будет зафиксирован при прокрутке */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #333;
 }
-
 
 header {
     text-align: center;
@@ -27,12 +26,15 @@ nav li {
 }
 
 .nav-btn {
-    padding: 10px 20px;
-    font-size: 18px;
+    display: inline-block;
+    padding: 20px 40px; /* Увеличенные размеры кнопок */
+    font-size: 24px; /* Увеличенный размер шрифта */
     border: none;
     background-color: #28a745;
     color: #fff;
-    cursor: pointer;
+    text-decoration: none; /* Убираем подчеркивание */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 .nav-btn:hover {
