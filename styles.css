@@ -48,3 +48,7 @@ nav li {
     height: auto;
     border-radius: 10px;
 }
+
+.menu-category {
+    margin: 20px 0;
+}
