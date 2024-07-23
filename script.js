@@ -1,47 +1,81 @@
-const cartList = document.getElementById('cart-list');
-const checkoutButton = document.getElementById('checkout');
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('order-btn').addEventListener('click', showOrderMenu);
+    document.getElementById('menu-btn').addEventListener('click', showMenu);
+    document.getElementById('cart-btn').addEventListener('click', showCart);
+    document.getElementById('contact-btn').addEventListener('click', showContacts);
 
-let cart = [];
+    function showOrderMenu() {
+        const mainContent = document.getElementById('main-content');
+        mainContent.innerHTML = `
+            <h2>Сделать заказ</h2>
+            <div class="menu-item" data-id="1">
+                <img src="path/to/pizza-image.jpg" alt="Пицца">
+                <p>Пицца</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="menu-item" data-id="2">
+                <img src="path/to/hotdog-image.jpg" alt="Хот дог">
+                <p>Хот дог</p>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <!-- Добавьте другие категории по аналогии -->
+        `;
 
-// add event listeners to menu items
-document.querySelectorAll('#menu ul li').forEach((item) => {
-  item.addEventListener('click', (e) => {
-    const přípravок = e.target.textContent;
-    const price = e.target.dataset.price;
-    add(木 přípravок, price);
-  });
-});
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const menuItem = event.target.closest('.menu-item');
+                const itemId = menuItem.dataset.id;
+                addToCart(itemId);
+            });
+        });
+    }
 
-// add to cart function
-function add(пří přípravок, price) {
-  const item = { name:เตร, quantity: 1, price: price };
-  cart.push(item);
-  updateCart();
-}
+    function showMenu() {
+        const mainContent = document.getElementById('main-content');
+        mainContent.innerHTML = `
+            <h2>Меню</h2>
+            <div class="menu-category">
+                <h3>Пицца</h3>
+                <div class="menu-item">
+                    <p>С шпинатом - 600 руб.</p>
+                </div>
+                <div class="menu-item">
+                    <p>С креветками - 650 руб.</p>
+                </div>
+                <!-- Добавьте другие пиццы по аналогии -->
+            </div>
+            <div class="menu-category">
+                <h3>Хот доги</h3>
+                <div class="menu-item">
+                    <p>Хот дог - 200 руб.</p>
+                </div>
+                <!-- Добавьте другие хот доги по аналогии -->
+            </div>
+            <!-- Добавьте другие категории по аналогии -->
+        `;
+    }
 
-// update cart function
-function updateCart() {
-  cartList.innerHTML = '';
-  cart.forEach((item) => {
-    const li = document.createElement('li');
-    li.textContent = `${item.name} x ${item.quantity} - ${item.price} руб.`;
-    cartList.appendChild(li);
-  });
-  checkoutButton.disabled =!cart.length;
-}
+    function showCart() {
+        const mainContent = document.getElementById('main-content');
+        mainContent.innerHTML = `
+            <h2>Корзина</h2>
+            <p>Корзина пуста.</p>
+        `;
+    }
 
-// checkout function
-checkoutButton.addEventListener('click', () => {
-  // send request to server to create order
-  fetch('/create-order', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(cart),
-  })
- .then((response) => response.json())
- .then((data) => {
-    // redirect to payment page
-    window.location.href = `/payment/${data.orderId}`;
-  })
- .catch((error) => console.error(error));
+    function showContacts() {
+        const mainContent = document.getElementById('main-content');
+        mainContent.innerHTML = `
+            <h2>Контакты</h2>
+            <div class="contact-info">
+                <p>Адрес: ул. Примерная, д. 1</p>
+                <p>Телефон: +7 (123) 456-78-90</p>
+            </div>
+        `;
+    }
+
+    function addToCart(itemId) {
+        // Добавить товар в корзину (здесь логика для обработки корзины)
+        console.log('Товар добавлен в корзину: ', itemId);
+    }
 });
