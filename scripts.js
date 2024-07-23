@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const cart = document.getElementById('cart');
     const checkoutButton = document.getElementById('checkout');
+    const notification = document.getElementById('notification');
     const toppings = [
         { name: 'Шампиньоны', price: 70 },
         { name: 'Чесночный соус', price: 70 },
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const quantity = 1;
 
             addItemToCart(item, price, quantity);
-            alert('Успешно добавлено в корзину');
+            showNotification('Успешно добавлено в корзину');
 
             if (item.toLowerCase().includes('пицца')) {
                 showToppingsButton(button, item, price, quantity);
@@ -116,4 +117,16 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    function showNotification(message) {
+        notification.textContent = message;
+        notification.style.display = 'block';
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 2000);
+    }
+
+    checkoutButton.addEventListener('click', function() {
+        alert('Оформление заказа...');
+    });
 });
