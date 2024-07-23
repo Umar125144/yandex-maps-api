@@ -36,22 +36,20 @@ document.addEventListener('DOMContentLoaded', () => {
             <h2>Меню</h2>
             <div class="menu-category">
                 <h3>Пицца</h3>
-                <div class="menu-item">
-                    <p>С шпинатом - 600 руб.</p>
-                </div>
-                <div class="menu-item">
-                    <p>С креветками - 650 руб.</p>
-                </div>
-                <!-- Добавьте другие пиццы по аналогии -->
+                ${generateMenuItems(pizzaMenu)}
             </div>
             <div class="menu-category">
-                <h3>Хот доги</h3>
-                <div class="menu-item">
-                    <p>Хот дог - 200 руб.</p>
-                </div>
-                <!-- Добавьте другие хот доги по аналогии -->
+                <h3>Панини</h3>
+                ${generateMenuItems(paniniMenu)}
             </div>
-            <!-- Добавьте другие категории по аналогии -->
+            <div class="menu-category">
+                <h3>Десерты</h3>
+                ${generateMenuItems(dessertMenu)}
+            </div>
+            <div class="menu-category">
+                <h3>Напитки</h3>
+                ${generateMenuItems(drinkMenu)}
+            </div>
         `;
     }
 
@@ -78,4 +76,52 @@ document.addEventListener('DOMContentLoaded', () => {
         // Добавить товар в корзину (здесь логика для обработки корзины)
         console.log('Товар добавлен в корзину: ', itemId);
     }
+
+    function generateMenuItems(menu) {
+        return menu.map(item => `
+            <div class="menu-item">
+                <p>${item.name} - ${item.price} руб.</p>
+            </div>
+        `).join('');
+    }
+
+    const pizzaMenu = [
+        { name: 'С шпинатом', price: 600 },
+        { name: 'С креветками', price: 650 },
+        { name: 'С горгонзолой', price: 480 },
+        { name: 'С баклажанами', price: 650 },
+        { name: 'Поло Песто', price: 480 },
+        { name: 'Пицца фреш', price: 680 },
+        { name: 'Пицца CiaoBella', price: 650 },
+        { name: 'Пепперони с горгонзола', price: 680 },
+        { name: 'Пепперони', price: 560 },
+        { name: 'Ветчина со страчателлой', price: 700 },
+        { name: 'Ветчина с грибами', price: 520 },
+        { name: '4 сыра', price: 520 },
+        { name: '4 Сезона', price: 550 },
+        { name: 'Маргарита', price: 400 },
+        { name: 'Гавайская', price: 520 },
+        { name: 'CiaoBella Rossa', price: 650 }
+    ];
+
+    const paniniMenu = [
+        { name: 'Панини с сыром страчателла', price: 300 },
+        { name: 'Панини с ветчиной и рукколой', price: 250 },
+        { name: 'Панини с баклажанами', price: 250 },
+        { name: 'Пепперони', price: 350 }
+    ];
+
+    const dessertMenu = [
+        { name: 'Торт фисташка', price: 300 },
+        { name: 'Халопени', price: 70 }
+    ];
+
+    const drinkMenu = [
+        { name: 'Чай 0,3', price: 60 },
+        { name: 'Морс 0,25', price: 120 },
+        { name: 'Rioba Сок 0,25', price: 120 },
+        { name: 'Pepsi Cola', price: 120 },
+        { name: 'Добрый 0,33 ж/б', price: 110 },
+        { name: 'Молочный коктейль 0,4л', price: 250 }
+    ];
 });
