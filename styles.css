@@ -1,9 +1,12 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('path/to/background-image.jpg');
-    background-size: cover;
+    background-image: url('path/to/background.jpg');
+    background-size: cover; /* Фон будет покрывать всю область */
+    background-repeat: no-repeat; /* Фон не будет повторяться */
+    background-attachment: fixed; /* Фон будет зафиксирован при прокрутке */
     color: #333;
 }
+
 
 header {
     text-align: center;
