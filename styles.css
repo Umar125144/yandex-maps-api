@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('path/to/background.jpg');
+    background-image: url('path/to/обои.jpg');
     background-size: cover; /* Фон будет покрывать всю область */
     background-repeat: no-repeat; /* Фон не будет повторяться */
     background-attachment: fixed; /* Фон будет зафиксирован при прокрутке */
