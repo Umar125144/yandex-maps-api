@@ -14,25 +14,66 @@ document.addEventListener('DOMContentLoaded', function() {
         { name: 'Ветчина', price: 70 }
     ];
 
-    // Пример добавления товара в корзину
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     addToCartButtons.forEach(button => {
         button.addEventListener('click', function() {
             const item = button.dataset.item;
             const price = button.dataset.price;
-            const quantity = 1; // Здесь можно добавить выбор количества
+            const quantity = 1;
+
+            addItemToCart(item, price, quantity);
+            alert('Успешно добавлено в корзину');
+
             if (item.toLowerCase().includes('пицца')) {
-                showToppingsModal(item, price, quantity);
-            } else {
-                addItemToCart(item, price, quantity);
+                showToppingsButton(button, item, price, quantity);
             }
         });
     });
 
     function addItemToCart(item, price, quantity) {
         const itemElement = document.createElement('div');
-        itemElement.textContent = `${item} - ${quantity} шт - ${price} руб`;
+        itemElement.innerHTML = `
+            <p>${item} - ${quantity} шт - ${price} руб</p>
+            <div class="quantity-controls">
+                <button class="decrease-quantity">-</button>
+                <input type="number" value="${quantity}" min="1">
+                <button class="increase-quantity">+</button>
+            </div>
+        `;
         cart.appendChild(itemElement);
+
+        const decreaseButton = itemElement.querySelector('.decrease-quantity');
+        const increaseButton = itemElement.querySelector('.increase-quantity');
+        const quantityInput = itemElement.querySelector('input');
+
+        decreaseButton.addEventListener('click', function() {
+            let currentQuantity = parseInt(quantityInput.value);
+            if (currentQuantity > 1) {
+                quantityInput.value = --currentQuantity;
+            }
+        });
+
+        increaseButton.addEventListener('click', function() {
+            let currentQuantity = parseInt(quantityInput.value);
+            quantityInput.value = ++currentQuantity;
+        });
+
+        quantityInput.addEventListener('change', function() {
+            if (quantityInput.value < 1) {
+                quantityInput.value = 1;
+            }
+        });
+    }
+
+    function showToppingsButton(button, item, price, quantity) {
+        const toppingButton = document.createElement('button');
+        toppingButton.classList.add('add-topping');
+        toppingButton.textContent = 'Добавить топпинг';
+        button.parentElement.appendChild(toppingButton);
+
+        toppingButton.addEventListener('click', function() {
+            showToppingsModal(item, price, quantity);
+        });
     }
 
     function showToppingsModal(item, price, quantity) {
@@ -41,35 +82,38 @@ document.addEventListener('DOMContentLoaded', function() {
         const modalContent = document.createElement('div');
         modalContent.classList.add('modal-content');
         modalContent.innerHTML = `<h3>Добавки для ${item}</h3>`;
-        
+
         toppings.forEach(topping => {
             const toppingElement = document.createElement('div');
-            toppingElement.innerHTML = `<input type="checkbox" id="${topping.name}" name="${topping.name}" value="${topping.price}">
-                                        <label for="${topping.name}">${topping.name} - ${topping.price} руб</label>`;
+            toppingElement.innerHTML = `
+                <label>
+                    <input type="checkbox" data-item="${topping.name}" data-price="${topping.price}">
+                    ${topping.name} - ${topping.price} руб
+                </label>
+            `;
             modalContent.appendChild(toppingElement);
         });
 
         const addButton = document.createElement('button');
-        addButton.textContent = 'Добавить в корзину';
-        addButton.addEventListener('click', function() {
-            let totalPrice = parseFloat(price);
-            const selectedToppings = [];
-            modalContent.querySelectorAll('input:checked').forEach(topping => {
-                selectedToppings.push(topping.name);
-                totalPrice += parseFloat(topping.value);
-            });
-
-            addItemToCart(`${item} с добавками: ${selectedToppings.join(', ')}`, totalPrice, quantity);
-            document.body.removeChild(modal);
-        });
+        addButton.classList.add('add-to-cart');
+        addButton.textContent = 'Добавить';
         modalContent.appendChild(addButton);
 
         modal.appendChild(modalContent);
         document.body.appendChild(modal);
-    }
 
-    checkoutButton.addEventListener('click', function() {
-        alert('Ваш заказ оформлен!');
-        cart.innerHTML = ''; // Очистить корзину после оформления заказа
-    });
+        addButton.addEventListener('click', function() {
+            const selectedToppings = modalContent.querySelectorAll('input[type="checkbox"]:checked');
+            selectedToppings.forEach(topping => {
+                addItemToCart(topping.dataset.item, topping.dataset.price, quantity);
+            });
+            document.body.removeChild(modal);
+        });
+
+        modal.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                document.body.removeChild(modal);
+            }
+        });
+    }
 });
